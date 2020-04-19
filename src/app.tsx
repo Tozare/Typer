@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './app.less'
+import { PracticePage } from 'components/pages/practice'
+import { Services } from 'services/index'
 import * as serviceWorker from './service-worker'
 
 ReactDOM.render(
     <React.StrictMode>
+        <Services />
         <div>Hello</div>
+        <PracticePage />
     </React.StrictMode>,
     document.getElementById('root')
 )
