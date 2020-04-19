@@ -2,9 +2,9 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/web/index.tsx',
+    entry: './src/app.tsx',
     output: {
-        path: path.resolve(__dirname, 'builds/web'),
+        path: path.resolve(__dirname, 'builds/app/'),
         filename: 'app.[hash].js'
     },
     module: {
@@ -33,7 +33,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, './src/web/index.html'),
+            template: path.join(__dirname, './src/index.html'),
             filename: 'index.html',
             inject: true,
         })

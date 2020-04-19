@@ -30,8 +30,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "build": "webpack",
-    "build:web": "webpack --config web.webpack.config.js"
+    "build:production": "webpack --mode=production && webpack --mode=production --config web.webpack.config.js",
+    "build:development": "webpack --mode=development && webpack --mode=development --config web.webpack.config.js",
+    "start": "node ./builds/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
