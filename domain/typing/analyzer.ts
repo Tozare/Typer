@@ -1,32 +1,35 @@
 import { Observable } from 'rxjs'
-import { map, shareReplay, startWith } from 'rxjs/operators'
+import { map, shareReplay, startWith, takeWhile } from 'rxjs/operators'
+import { isSupportedCharacter, SupportedCharacter } from '@commons/characters'
 
 export type TypingAnalyzerState = {
     pointer: number,
     data: {
-        character: string
+        character: SupportedCharacter,
         success: boolean | undefined
     }[]
 }
 
 export class TypingAnalyzer {
-    private readonly state: TypingAnalyzerState
-    data: Observable<TypingAnalyzerState>
+    private readonly stateData: TypingAnalyzerState
+    state: Observable<TypingAnalyzerState>
 
-    constructor(charactersStream: Observable<string>, text: string) {
-        this.state = {
+    constructor(charactersStream: Observable<SupportedCharacter | undefined>, text: string) {
+        this.stateData = {
             pointer: 0,
-            data: text.split('').map((character: string) => ({
-                character,
-                success: undefined
-            }))
+            data: text.split('')
+                .filter(it => isSupportedCharacter(it))
+                .map((character) => ({
+                    character: character as SupportedCharacter,
+                    success: undefined
+                }))
         }
 
-        this.data = charactersStream.pipe(
+        this.state = charactersStream.pipe(
             map((it) => {
-                const { data, pointer } = this.state
+                const { data, pointer } = this.stateData
                 if (it === data[pointer].character) {
-                    this.state.pointer +=1
+                    this.stateData.pointer +=1
                     if (data[pointer].success === undefined) {
                         data[pointer].success = true
                     }
@@ -34,9 +37,10 @@ export class TypingAnalyzer {
                     data[pointer].success = false
                 }
 
-                return this.state
+                return this.stateData
             }),
-            startWith(this.state),
+            startWith(this.stateData),
+            takeWhile(it => it.pointer < it.data.length),
             shareReplay(1)
         )
     }

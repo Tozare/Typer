@@ -8,7 +8,6 @@ import * as serviceWorker from './service-worker'
 ReactDOM.render(
     <React.StrictMode>
         <Services />
-        <div>Hello</div>
         <PracticePage />
     </React.StrictMode>,
     document.getElementById('root')

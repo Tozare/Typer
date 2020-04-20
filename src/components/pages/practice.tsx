@@ -1,54 +1,37 @@
-import React, { Component } from 'react'
-import { TypingAnalyzer, TypingAnalyzerState } from '@domain/typing/analyzer'
+import React, { useState } from 'react'
+import { TypingAnalyzer } from '@domain/typing/analyzer'
 import { TypingStream } from '@domain/typing/stream'
+import { TypingWindow } from 'components/typing-window'
+import { finalize } from 'rxjs/operators'
+import { randomInteger } from '@commons/random-number'
 import './practice.less'
 
-export class PracticePage extends Component {
-    state: TypingAnalyzerState  = {
-        pointer: 0,
-        data: []
-    }
+const texts = [
+    'It’s a remarkable feat for a company that faced a devastating setback in 2014, when its VSS Enterprise spaceplane experienced a catastrophic failure in the middle of a flight leading to the death of one of the vehicle’s copilots.',
+    'Richard Branson began his spaceflight company, Virgin Galactic, 14 years ago.',
+    'In all that time, the company has experienced several highs, and some crushing lows, but it has never actually gone into space.',
+    'SpaceShipTwo is part of a two-part launch system pioneered by Virgin Galactic since its inception',
+    'WhiteKnightTwo carries SpaceShipTwo into high altitude, and the latter separates and undergoes a massive thruster burn to head into suborbital space for a short duration.',
+]
 
-    componentDidMount() {
-        const typingAnalyzer = new TypingAnalyzer(TypingStream.shared().characters, 'The self-study lessons in this section are written and organised according to the levels of the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.')
-        typingAnalyzer.data.subscribe(({ data, pointer }) => {
-            this.setState({
-                data,
-                pointer
-            })
-        })
+export const PracticePage = () => {
+    const [typingAnalyzer, initNewTypingAnalyzer] = useState(
+        new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)])
+    )
 
-    }
+    const restartPractice = () =>
+        initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)]))
 
-    componentWillUnmount() {
-        // TODO: Unsubscribe
-        // TODO: Keys stream as Service
-    }
+    const typingAnalyzerState = typingAnalyzer.state.pipe(
+        finalize(restartPractice)
+    )
 
-    render() {
-        const { data, pointer } = this.state
-
-        return (
-            <div className='typing-practice'>
-                {
-                    data.map((it, index) => {
-                        const isActive = pointer === index
-                        const { success, character } = it
-                        let className = ''
-                        if (isActive) {
-                            className += 'active '
-                        }
-
-                        if (success) {
-                            className += 'success '
-                        } else if(success === false) {
-                            className += 'failure '
-                        }
-                        return <span className={className}>{character}</span>
-                    })
-                }
+    return (
+        <div className='typing-practice'>
+            <div className='window'>
+                <TypingWindow typingAnalyzeState={typingAnalyzerState}/>
             </div>
+        </div>
 
-        )
-    }
+    )
 }
