@@ -38,20 +38,31 @@ export const TypingWindow = (props: Props) => {
                 data.map((it, index) => {
                     const isActive = pointer === index
                     const { success, character } = it
-                    let className = 'letter '
+                    let characterBoxClassName = 'character-box '
+                    let characterClassName = 'character '
                     if (isActive) {
-                        className += 'active '
-                        if (character !== ' ') {
-                            className += 'underline '
-                        }
+                        characterBoxClassName += 'active '
+                        characterClassName += 'active '
                     }
 
                     if (success) {
-                        className += 'success '
+                        characterBoxClassName += 'success '
+                        characterClassName += 'success '
                     } else if(success === false) {
-                        className += 'failure '
+                        characterBoxClassName += 'failure '
+                        characterClassName += 'failure '
                     }
-                    return <span className={className}>{character === ' ' ? '␣' : character}</span>
+
+                    // TODO: Fix it
+                    if (character === ' ') {
+                        characterClassName += 'hotfix-set-transparent '
+                    }
+
+                    return (
+                        <div className={characterBoxClassName}>
+                            <span className={characterClassName}>{character === ' ' ? '␣' : character}</span>
+                        </div>
+                    )
                 })
             }
         </div>
