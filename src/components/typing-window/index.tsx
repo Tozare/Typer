@@ -11,7 +11,6 @@ export const TypingWindow = (props: Props) => {
     const { typingAnalyzeState } = props
     const [state, setState] = useState<TypingAnalyzerState>()
 
-    // TODO: double rendering ?
     useEffect(
         () => {
             const subscription = typingAnalyzeState.subscribe((state) => {

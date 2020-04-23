@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { TypingAnalyzer } from '@domain/typing/analyzer'
 import { TypingStream } from '@domain/typing/stream'
 import { TypingWindow } from 'components/typing-window'
-import { finalize } from 'rxjs/operators'
+import { TypingAnalytics } from 'components/typing-analytics'
+import { zip } from 'rxjs'
+import { finalize, take } from 'rxjs/operators'
 import { randomInteger } from '@commons/random-number'
 import './practice.less'
 
@@ -19,19 +21,46 @@ export const PracticePage = () => {
         new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)])
     )
 
-    const restartPractice = () =>
-        initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)]))
+    const [state, setState] = useState({
+        typingSpeed: 0,
+        typingAccuracy: 100,
+    })
+
+    const restartPractice = () => {
+        zip(
+            typingAnalyzer.typingSpeedInAmountOfCharactersPerMinute(),
+            typingAnalyzer.typingAccuracyInPercents()
+        ).pipe(
+            take(1)
+        ).subscribe(([typingSpeed, typingAccuracy]) => {
+            setState({
+                typingSpeed,
+                typingAccuracy
+            })
+            initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)]))
+        })
+    }
 
     const typingAnalyzerState = typingAnalyzer.state.pipe(
         finalize(restartPractice)
     )
 
+    const { typingSpeed, typingAccuracy } = state
+
     return (
         <div className='typing-practice'>
             <div className='window'>
-                <TypingWindow typingAnalyzeState={typingAnalyzerState}/>
+                {
+                    typingSpeed === 0
+                        ? null
+                        :  <TypingAnalytics
+                            typingAccuracy={typingAccuracy}
+                            typingAccuracyMeasure={'%'}
+                            typingSpeed={typingSpeed/5}
+                            typingSpeedMeasure={'wps'}/>
+                }
+                <TypingWindow typingAnalyzeState={typingAnalyzerState} />
             </div>
         </div>
-
     )
 }
