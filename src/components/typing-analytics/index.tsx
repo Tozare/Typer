@@ -4,7 +4,7 @@ import './index.less'
 type Props = {
     typingSpeed: number,
     typingAccuracy: number,
-    typingSpeedMeasure: 'wps' | 'characters',
+    typingSpeedMeasure: 'wpm' | 'characters',
     typingAccuracyMeasure: '%'
     errors?: number
 }

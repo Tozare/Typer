@@ -53,7 +53,9 @@ export class TypingAnalyzer {
                     end: timestamp
                 })
 
-                return this.stateData
+                // TODO: Analyze why useObservable subscriber does not
+                //  handle changes in case there is same link
+                return { ...this.stateData }
             }),
             startWith(this.stateData),
             takeWhile(it => it.pointer < it.data.length),
