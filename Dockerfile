@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 COPY . .
-RUN yarn install && yarn build && yarn build:web
+RUN yarn install && yarn build:production
 
 
 EXPOSE 3001

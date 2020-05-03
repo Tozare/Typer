@@ -1,0 +1,63 @@
+@keyframes fade-in {
+  0% { border-color: #3295db; }
+  100% { border-color: transparent; }
+};
+
+.typing-window {
+  background: white;
+  padding: 30px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  .word {
+    display: inline-block;
+  }
+
+  .character-box {
+    width: 21px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px 9px 0;
+    border-radius: 7px;
+
+    &.active {
+      background-color: transparent;
+      border-radius: 0;
+      border-bottom: 3px solid #3295db;
+      margin-bottom: -3px;
+      animation: fade-in 0.9s infinite alternate;
+    }
+
+    &.success {
+      background: #edf7e7;
+    }
+
+    &.failure {
+      background-color: #ffdcd9;
+    }
+
+    .character {
+      color: #4a4a4a;
+      font-size: 30px;
+
+      &.active {
+        color: #3295db;
+      }
+
+      &.success {
+        color: #95c590;
+        transition: color .12s ease-in-out;
+      }
+
+      &.failure {
+        color: #d55b60;
+      }
+
+      &.hotfix-set-transparent {
+        color: transparent;
+      }
+    }
+  }
+}
