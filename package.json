@@ -33,8 +33,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "build:production": "webpack --mode=production && webpack --mode=production --config web.webpack.config.js",
-    "build:development": "webpack --mode=development && webpack --mode=development --config web.webpack.config.js",
+    "build:production": "webpack --mode=production --config webpack.server.config.js && webpack --mode=production --config webpack.app.config.js",
+    "build-app:development": "webpack --mode=development --config webpack.app.config.js --watch",
+    "build-server:development": "webpack --mode=development --config webpack.server.config.js --watch",
     "start": "node ./builds/server.js"
   },
   "eslintConfig": {

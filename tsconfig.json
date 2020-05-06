@@ -15,24 +15,3 @@
     }
   }
 }
-//{
-//  "compilerOptions": {
-//    "target": "es5",
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ],
-//    "allowJs": true,
-//    "skipLibCheck": true,
-
-//    "allowSyntheticDefaultImports": true,
-//    "forceConsistentCasingInFileNames": true,
-//    "module": "esnext",
-//    "resolveJsonModule": true,
-//    "isolatedModules": true,
-//    "noEmit": true,
-
-//  },
-
-//}
