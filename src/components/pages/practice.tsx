@@ -7,7 +7,7 @@ import { zip } from 'rxjs'
 import { finalize, take } from 'rxjs/operators'
 import { randomInteger } from '@commons/random-number'
 import './practice.less'
-import {Keyboard} from "components/keyboard/keyboard";
+import { Keyboard } from "components/keyboard/keyboard";
 
 const texts = [
     'He liked to play with words in the bathtub.',

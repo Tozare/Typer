@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { Observable } from 'rxjs'
 import { TypingAnalyzerState } from '@domain/typing/analyzer'
-import { useObservable } from '@commons/react-hooks/use-observable'
-import {isSupportedCharacter, SupportedCharacter} from '@commons/characters'
 
 import './keyboard.less';
-import {TypingStream} from "@domain/typing/stream";
+
 
 
 type Props = {
