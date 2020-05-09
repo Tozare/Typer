@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TypingAnalyzer } from '@domain/typing/analyzer'
 import { TypingStream } from '@domain/typing/stream'
 import { TypingWindow } from 'components/typing-window'
 import { TypingAnalytics } from 'components/typing-analytics'
 import { zip } from 'rxjs'
-import { finalize, take } from 'rxjs/operators'
+import { finalize, take, map } from 'rxjs/operators'
 import { randomInteger } from '@commons/random-number'
 import './practice.less'
 import { Keyboard } from "components/keyboard/keyboard";
@@ -36,6 +36,7 @@ const texts = [
 ]
 
 export const PracticePage = () => {
+    // TODO: Remove instance of TypingAnalyzer from state
     const [typingAnalyzer, initNewTypingAnalyzer] = useState(
         new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)])
     )

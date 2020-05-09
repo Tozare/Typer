@@ -15,7 +15,8 @@
     .key {
       border-radius: 5px;
       background-color: #FFFFFF;
-      display:grid;
+      display: grid;
+
       .center {
         justify-self: center;
         align-self: center;
@@ -32,9 +33,14 @@
         align-self: end;
         margin: 5px;
       }
+
+      &.active {
+        background-color: #3295db;
+      }
     }
+
     .key:hover {
-      background-color: #6495ED;
+      background-color: #3295db;
     }
   }
 

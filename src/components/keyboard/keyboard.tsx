@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
 import { Observable } from 'rxjs'
 import { TypingAnalyzerState } from '@domain/typing/analyzer'
+import { useObservable } from '@commons/react-hooks/use-observable'
+import { isCharacterRequiredShift } from '@commons/characters'
 
 import './keyboard.less';
-
-
 
 type Props = {
     typingAnalyzeState: Observable<TypingAnalyzerState>
 }
 
 export const Keyboard = (props: Props) => {
+    const { typingAnalyzeState } = props
+    const state = useObservable<TypingAnalyzerState | undefined>(typingAnalyzeState)
+    const character = state?.data[state?.pointer].character
+    const isShiftActive = character && isCharacterRequiredShift(character)
 
 
     return (
-
         <div className='keyboard'>
             <div className='row-container row1'>
-                <div className='key'>
+                <div className={`key ${character === '~' || character === '`' ? 'active' : ''}`}>
                     <div className='center'>~</div>
                     <div className='center'>`</div>
                 </div>
@@ -126,7 +129,7 @@ export const Keyboard = (props: Props) => {
                 <div className="key">
                     <div className="left">caps lock</div>
                 </div>
-                <div className="key">
+                <div className={`key ${character === 'a' || character === 'A' ? 'active' : ''}`}>
                     <div className="center">a</div>
                 </div>
                 <div className="key">
@@ -168,7 +171,7 @@ export const Keyboard = (props: Props) => {
             </div>
 
             <div className="row-container row4">
-                <div className="key">
+                <div className={`key ${isShiftActive ? 'active' : ''}`}>
                     <div className="left">shift</div>
                 </div>
                 <div className="key">

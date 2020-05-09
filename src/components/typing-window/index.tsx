@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import { Observable } from 'rxjs'
 import { TypingAnalyzerState } from '@domain/typing/analyzer'
 import { useObservable } from '@commons/react-hooks/use-observable'
