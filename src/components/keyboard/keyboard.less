@@ -1,0 +1,62 @@
+.keyboard {
+  width: 780px;
+  display: grid;
+  grid-row-gap: 10px;
+  grid-auto-rows: 50px;
+
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #DCDCDC;
+
+  .row-container {
+    display: grid;
+    grid-column-gap: 5px;
+
+    .key {
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      display:grid;
+      .center {
+        justify-self: center;
+        align-self: center;
+      }
+
+      .left {
+        justify-self: start;
+        align-self: end;
+        margin: 5px;
+      }
+
+      .right {
+        justify-self: end;
+        align-self: end;
+        margin: 5px;
+      }
+    }
+    .key:hover {
+      background-color: #6495ED;
+    }
+  }
+
+  .row1 {
+    grid-template-columns: repeat(13, 50px) 65px;
+  }
+
+  .row2 {
+    grid-template-columns: 65px repeat(13, 50px);
+  }
+
+  .row3 {
+    grid-template-columns: 85px repeat(11, 50px) 85px;
+  }
+
+  .row4 {
+    grid-template-columns: 112.5px repeat(10, 50px) 112.5px;
+  }
+
+  .row5 {
+    grid-template-columns: repeat(2,50px) 65px 420px 65px repeat(2,50px);
+  }
+
+}
+
