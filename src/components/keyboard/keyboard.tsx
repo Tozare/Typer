@@ -13,30 +13,6 @@ type Props = {
 }
 
 export const Keyboard = (props: Props) => {
-;
-
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('keyup', handleKeyUp)
-
-
-    function handleKeyDown(event: KeyboardEvent) {
-        if (event.isComposing || event.keyCode === 229) {
-            return
-        }
-        const character = String.fromCharCode(event.keyCode)
-        // @ts-ignore
-        document.getElementById(character).parentElement.style.backgroundColor = "blue";
-    }
-
-
-    function handleKeyUp(event: KeyboardEvent) {
-        if (event.isComposing || event.keyCode === 229) {
-            return
-        }
-        const character = String.fromCharCode(event.keyCode)
-        // @ts-ignore
-        document.getElementById(character).parentElement.style.backgroundColor = "white"
-    }
 
 
     return (
