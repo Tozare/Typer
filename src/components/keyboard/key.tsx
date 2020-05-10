@@ -9,9 +9,7 @@ type Props = {
 
 
 export const Key = (props: Props) => {
-
     const { align, isActive, content, minorContent } = props
-
 
     return (
         <div className={`key ${isActive ? 'active' : ''}`}>
