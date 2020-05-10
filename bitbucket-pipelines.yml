@@ -2,6 +2,10 @@ image: node:alpine
 pipelines:
   default:
     - step:
+        name: Installing packages
         script:
           - yarn
+    - step:
+        name: Syntax checking (with eslint)
+        script:
           - yarn lint
