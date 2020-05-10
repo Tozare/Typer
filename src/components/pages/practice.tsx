@@ -7,7 +7,7 @@ import { zip } from 'rxjs'
 import { finalize, take } from 'rxjs/operators'
 import { randomInteger } from '@commons/random-number'
 import './practice.less'
-import { Keyboard } from "components/keyboard/keyboard";
+import { Keyboard } from "components/keyboard/keyboard"
 
 const texts = [
     'He liked to play with words in the bathtub.',
@@ -36,6 +36,7 @@ const texts = [
 ]
 
 export const PracticePage = () => {
+    // TODO: Remove instance of TypingAnalyzer from state
     const [typingAnalyzer, initNewTypingAnalyzer] = useState(
         new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)])
     )
@@ -67,22 +68,22 @@ export const PracticePage = () => {
     const { typingSpeed, typingAccuracy } = state
 
     return (
-            <div className='typing-practice'>
-                <div className='window'>
-                    {
-                        typingSpeed === 0
-                            ? null
-                            :  <TypingAnalytics
-                                typingAccuracy={typingAccuracy}
-                                typingAccuracyMeasure={'%'}
-                                typingSpeed={Math.ceil(typingSpeed/7)}
-                                typingSpeedMeasure={'wpm'}/>
-                    }
-                    <TypingWindow typingAnalyzeState={typingAnalyzerState} />
-                </div>
-                <div className='keyboard-container'>
-                    <Keyboard typingAnalyzeState={typingAnalyzerState}/>
-                </div>
+        <div className='typing-practice'>
+            <div className='window'>
+                {
+                    typingSpeed === 0
+                        ? null
+                        :  <TypingAnalytics
+                            typingAccuracy={typingAccuracy}
+                            typingAccuracyMeasure={'%'}
+                            typingSpeed={Math.ceil(typingSpeed/7)}
+                            typingSpeedMeasure={'wpm'}/>
+                }
+                <TypingWindow typingAnalyzeState={typingAnalyzerState} />
             </div>
+            <div className='keyboard-container'>
+                <Keyboard typingAnalyzeState={typingAnalyzerState}/>
+            </div>
+        </div>
     )
 }
