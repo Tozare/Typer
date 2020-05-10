@@ -2,10 +2,12 @@ image: node:alpine
 pipelines:
   default:
     - step:
-        name: Installing packages
+        name: Syntax checking (eslint)
         script:
           - yarn
-    - step:
-        name: Syntax checking (with eslint)
-        script:
           - yarn lint
+    - step:
+        name: Unit Testing (jest)
+        script:
+          - yarn
+          - yarn test
