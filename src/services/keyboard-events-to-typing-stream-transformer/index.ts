@@ -1,7 +1,7 @@
 import { Service } from '@commons/service'
 import { isSupportedCharacter, SupportedCharacter } from '@commons/characters'
 import { TypingStream } from '@domain/typing/stream'
-import {singleton} from "@commons/singleton"
+import { singleton } from "@commons/singleton"
 
 export class KeyboardEventsToTypingStreamTransformer implements Service {
     static shared = singleton(() => new KeyboardEventsToTypingStreamTransformer())

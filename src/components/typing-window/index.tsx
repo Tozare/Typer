@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Observable } from 'rxjs'
 import { TypingAnalyzerState } from '@domain/typing/analyzer'
 import { useObservable } from '@commons/react-hooks/use-observable'
@@ -35,11 +35,11 @@ export const TypingWindow = (props: Props) => {
     return (
         <div className='typing-window'>
             {
-                words.map((word) => {
+                words.map((word, index) => {
                     return (
-                        <div className={'word'}>
+                        <div className={'word'} key={index}>
                             {
-                                word.map((wordItem) => {
+                                word.map((wordItem, index) => {
                                     const { success, character, active } = wordItem
                                     let characterBoxClassName = 'character-box '
                                     let characterClassName = 'character '
@@ -62,7 +62,7 @@ export const TypingWindow = (props: Props) => {
                                     }
 
                                     return (
-                                        <div className={characterBoxClassName}>
+                                        <div className={characterBoxClassName} key={index + character}>
                                             <span className={characterClassName}>{character === ' ' ? '␣' : character}</span>
                                         </div>
                                     )

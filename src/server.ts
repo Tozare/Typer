@@ -6,10 +6,10 @@ const app = express()
 
 app.use(express.static('./builds/app/'))
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
 app.get('/', (req: Request, res: Response) => {
     fs.readFile('./builds/index.html', 'utf8', (err, data) => {
-        res.send(data);
+        res.send(data)
     })
 })
 
