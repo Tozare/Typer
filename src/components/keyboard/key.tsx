@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 type Props = {
     align: 'center' | 'right' | 'left'
@@ -10,7 +10,7 @@ type Props = {
 
 export const Key = (props: Props) => {
 
-    const { align, isActive, content, minorContent } = props;
+    const { align, isActive, content, minorContent } = props
 
 
     return (
