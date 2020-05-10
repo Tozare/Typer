@@ -27,7 +27,7 @@ const KeyComponent = (props: KeyComponentProps) => {
 
     if (keyContent1==='shift') {
         if (keyClass==="left"){
-            if (character && leftShiftKeys.includes(character)){
+            if (character && !leftShiftKeys.includes(character)){
                 return (
                     <div className={`key ${isShiftActive ? 'active' : ''}`}>
                         <div className={keyClass}>{keyContent1}</div>
@@ -35,7 +35,7 @@ const KeyComponent = (props: KeyComponentProps) => {
                 )
             }
         } else if (keyClass==='right'){
-            if (character && !leftShiftKeys.includes(character)){
+            if (character && leftShiftKeys.includes(character)){
                 return (
                     <div className={`key ${isShiftActive ? 'active' : ''}`}>
                         <div className={keyClass}>{keyContent1}</div>
