@@ -24,7 +24,7 @@ export const Keyboard = (props: Props) => {
                 return (
                     <div key={index+1} className={`row-container row${index + 1}`}>
                         {
-                            rowKeys.map(keyCharacteristics => {
+                            rowKeys.map((keyCharacteristics, index) => {
                                 const { align, content, minorContent } = keyCharacteristics
                                 let isActive = character === content || character === content.toLowerCase() || character === minorContent
                                 if (content === 'shift' && isShiftActive){
@@ -36,13 +36,7 @@ export const Keyboard = (props: Props) => {
                                 }
 
                                 return (
-                                    <Key
-                                        key={content}
-                                        align={align}
-                                        isActive={isActive}
-                                        content={content}
-                                        minorContent={minorContent}
-                                    />
+                                    <Key key={index} isActive={isActive} {...keyCharacteristics} />
                                 )
                             })
                         }
