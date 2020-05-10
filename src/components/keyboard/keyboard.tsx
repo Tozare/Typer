@@ -5,10 +5,62 @@ import { useObservable } from '@commons/react-hooks/use-observable'
 import { isCharacterRequiredShift } from '@commons/characters'
 
 import './keyboard.less';
+import {leftShiftKeys} from "./keyboardCharacteristics";
+import {keyboardKeys} from "./keyboardCharacteristics";
 
 type Props = {
     typingAnalyzeState: Observable<TypingAnalyzerState>
 }
+//TODO: ask whether it is correct
+type KeyComponentProps = {
+    character: string | undefined,
+    keyClass: string,
+    keyContent1: string,
+    keyContent2: string|undefined,
+    isShiftActive: boolean|undefined
+}
+
+
+const KeyComponent = (props: KeyComponentProps) => {
+    // TODO: optimize logic
+    const {character, keyClass, keyContent1, keyContent2, isShiftActive} = props;
+
+    if (keyContent1==='shift') {
+        if (keyClass==="left"){
+            if (character && leftShiftKeys.includes(character)){
+                return (
+                    <div className={`key ${isShiftActive ? 'active' : ''}`}>
+                        <div className={keyClass}>{keyContent1}</div>
+                    </div>
+                )
+            }
+        } else if (keyClass==='right'){
+            if (character && !leftShiftKeys.includes(character)){
+                return (
+                    <div className={`key ${isShiftActive ? 'active' : ''}`}>
+                        <div className={keyClass}>{keyContent1}</div>
+                    </div>
+                )
+            }
+        }
+    }
+
+    if (keyContent2===undefined){
+        return (
+            <div className={`key ${character === keyContent1.toLowerCase() || character===keyContent1 ? 'active' : ''}`}>
+                {console.log(character)}
+                <div className={keyClass}>{keyContent1}</div>
+            </div>
+        )
+    }
+    return (
+        <div className={`key ${character === keyContent1 || character === keyContent2 ? 'active' : ''}`}>
+            <div className={keyClass}>{keyContent1}</div>
+            <div className={keyClass}>{keyContent2}</div>
+        </div>
+    )
+}
+
 
 export const Keyboard = (props: Props) => {
     const { typingAnalyzeState } = props
@@ -19,220 +71,21 @@ export const Keyboard = (props: Props) => {
 
     return (
         <div className='keyboard'>
-            <div className='row-container row1'>
-                <div className={`key ${character === '~' || character === '`' ? 'active' : ''}`}>
-                    <div className='center'>~</div>
-                    <div className='center'>`</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="!">!</div>
-                    <div className="center" id="1">1</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="@">@</div>
-                    <div className="center" id="2">2</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="#">#</div>
-                    <div className="center" id="3">3</div>
-                </div>
-                <div className="key">
-                    <div className="center">$</div>
-                    <div className="center">4</div>
-                </div>
-                <div className="key">
-                    <div className="center">%</div>
-                    <div className="center">5</div>
-                </div>
-                <div className="key">
-                    <div className="center">^</div>
-                    <div className="center">6</div>
-                </div>
-                <div className="key">
-                    <div className="center">&</div>
-                    <div className="center">7</div>
-                </div>
-                <div className="key">
-                    <div className="center">*</div>
-                    <div className="center">8</div>
-                </div>
-                <div className="key">
-                    <div className="center">(</div>
-                    <div className="center">9</div>
-                </div>
-                <div className="key">
-                    <div className="center">)</div>
-                    <div className="center">0</div>
-                </div>
-                <div className="key">
-                    <div className="center">_</div>
-                    <div className="center">-</div>
-                </div>
-                <div className="key">
-                    <div className="center">+</div>
-                    <div className="center">=</div>
-                </div>
-                <div className="key">
-                    <div className="right">delete</div>
-                </div>
-            </div>
-
-            <div className="row-container row2">
-                <div className="key">
-                    <div className="left">tab</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="q">q</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="w">w</div>
-                </div>
-                <div className="key">
-                    <div className="center" id="e">e</div>
-                </div>
-                <div className="key">
-                    <div className="center ">r</div>
-                </div>
-                <div className="key">
-                    <div className="center">t</div>
-                </div>
-                <div className="key">
-                    <div className="center">y</div>
-                </div>
-                <div className="key">
-                    <div className="center">u</div>
-                </div>
-                <div className="key">
-                    <div className="center">i</div>
-                </div>
-                <div className="key">
-                    <div className="center">o</div>
-                </div>
-                <div className="key">
-                    <div className="center">p</div>
-                </div>
-                <div className="key">
-                    <div className="center">{"{"}</div>
-                    <div className="center">[</div>
-                </div>
-                <div className="key">
-                    <div className="center">{"}"}</div>
-                    <div className="center">]</div>
-                </div>
-                <div className="key">
-                    <div className="center">|</div>
-                    <div className="center">\</div>
-                </div>
-            </div>
-
-            <div className="row-container row3">
-                <div className="key">
-                    <div className="left">caps lock</div>
-                </div>
-                <div className={`key ${character === 'a' || character === 'A' ? 'active' : ''}`}>
-                    <div className="center">a</div>
-                </div>
-                <div className="key">
-                    <div className="center">s</div>
-                </div>
-                <div className="key">
-                    <div className="center">d</div>
-                </div>
-                <div className="key">
-                    <div className="center">f</div>
-                </div>
-                <div className="key">
-                    <div className="center">g</div>
-                </div>
-                <div className="key">
-                    <div className="center">h</div>
-                </div>
-                <div className="key">
-                    <div className="center">j</div>
-                </div>
-                <div className="key">
-                    <div className="center">k</div>
-                </div>
-                <div className="key">
-                    <div className="center">l</div>
-                </div>
-
-                <div className="key">
-                    <div className="center">:</div>
-                    <div className="center">;</div>
-                </div>
-                <div className="key">
-                    <div className="center">"</div>
-                    <div className="center">'</div>
-                </div>
-                <div className="key">
-                    <div className="right">enter</div>
-                </div>
-            </div>
-
-            <div className="row-container row4">
-                <div className={`key ${isShiftActive ? 'active' : ''}`}>
-                    <div className="left">shift</div>
-                </div>
-                <div className="key">
-                    <div className="center">z</div>
-                </div>
-                <div className="key">
-                    <div className="center">x</div>
-                </div>
-                <div className="key">
-                    <div className="center">c</div>
-                </div>
-                <div className="key">
-                    <div className="center">v</div>
-                </div>
-                <div className="key">
-                    <div className="center">b</div>
-                </div>
-                <div className="key">
-                    <div className="center">n</div>
-                </div>
-                <div className="key">
-                    <div className="center">m</div>
-                </div>
-                <div className="key">
-                    <div className="center">{"<"}</div>
-                    <div className="center">,</div>
-                </div>
-                <div className="key">
-                    <div className="center">></div>
-                    <div className="center">.</div>
-                </div>
-                <div className="key">
-                    <div className="center">?</div>
-                    <div className="center">/</div>
-                </div>
-                <div className="key">
-                    <div className="right">shift</div>
-                </div>
-            </div>
-
-            <div className="row-container row5">
-                <div className="key">
-                    <div className="left">ctrl</div>
-                </div>
-                <div className="key">
-                    <div className="left">alt</div>
-                </div>
-                <div className="key">
-                    <div className="left">cmd</div>
-                </div>
-                <div className="key"></div>
-                <div className="key">
-                    <div className="right">cmd</div>
-                </div>
-                <div className="key">
-                    <div className="right">alt</div>
-                </div>
-                <div className="key">
-                    <div className="right">ctrl</div>
-                </div>
-            </div>
+            {keyboardKeys.map((rowKeys,index) => {
+                    return (
+                        <div key={index+1} className={`row-container row${index + 1}`}>
+                            { rowKeys.map(keyCharacteristics =>
+                                <KeyComponent key={keyCharacteristics.keyContent1} character={character}
+                                              keyClass={keyCharacteristics.keyClass}
+                                              keyContent1={keyCharacteristics.keyContent1}
+                                              keyContent2={keyCharacteristics.keyContent2}
+                                              isShiftActive={isShiftActive}
+                                />
+                            )}
+                        </div>
+                    )
+                }
+            )}
         </div>
     )
 
