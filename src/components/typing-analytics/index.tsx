@@ -2,9 +2,9 @@ import React from 'react'
 import './index.less'
 
 type Props = {
-    typingSpeed: number,
-    typingAccuracy: number,
-    typingSpeedMeasure: 'wpm' | 'characters',
+    typingSpeed: number
+    typingAccuracy: number
+    typingSpeedMeasure: 'wpm' | 'characters'
     typingAccuracyMeasure: '%'
     errors?: number
 }
