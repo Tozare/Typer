@@ -20,8 +20,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
+    "eslint": "^7.0.0",
+    "eslint-plugin-react": "^7.19.0",
     "html-webpack-plugin": "^4.2.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
@@ -36,10 +40,8 @@
     "build:production": "webpack --mode=production --config webpack.server.config.js && webpack --mode=production --config webpack.app.config.js",
     "build-app:development": "webpack --mode=development --config webpack.app.config.js --watch",
     "build-server:development": "webpack --mode=development --config webpack.server.config.js --watch",
-    "start": "node ./builds/server.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "node ./builds/server.js",
+    "lint": "eslint ./"
   },
   "browserslist": {
     "production": [
