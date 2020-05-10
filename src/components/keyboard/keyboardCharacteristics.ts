@@ -8,7 +8,13 @@ export const leftShiftKeys = [
 ]
 
 
-export const keyboardKeys = [
+type KeyboardKey = {
+    align: 'center' | 'right' | 'left'
+    content: string
+    minorContent?: string
+}
+
+export const keyboardKeys: KeyboardKey[][] = [
     [
         {align: 'center', content: '~', minorContent: '~'},
         {align: 'center', content: '!', minorContent: '1'},
@@ -39,7 +45,7 @@ export const keyboardKeys = [
         {align: 'center', content: 'P'},
         {align: 'center', content: '{', minorContent: '['},
         {align: 'center', content: '}', minorContent: ']'},
-        {align: 'center', content: '|', minorContent: '\''} // WHY?
+        {align: 'center', content: '|', minorContent: '\\'}
     ],
     [
         {align: 'left', content: 'caps lock'},
@@ -78,6 +84,5 @@ export const keyboardKeys = [
         {align: 'right', content: 'cmd'},
         {align: 'right', content: 'alt'},
         {align: 'right', content: 'ctrl'},
-
     ]
 ]

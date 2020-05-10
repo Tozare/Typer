@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-    align: string//'center' | 'right' | 'left'
+    align: 'center' | 'right' | 'left'
     isActive: boolean
     content?: string
     minorContent?: string
