@@ -35,6 +35,7 @@
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "object-curly-spacing": [2, "always"],
-        "semi": ["warn", "never"]
+        "semi": ["warn", "never"],
+        "@typescript-eslint/no-var-requires": "off"
     }
 }
