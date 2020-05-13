@@ -22,7 +22,7 @@ export const Key = (props: Props) => {
     }
 
     return (
-        <div className='key' style={{backgroundColor: backgroundColor}}>
+        <div className='key' style={{ backgroundColor: backgroundColor }}>
             <div className={align}>{content}</div>
             { minorContent !== undefined && <div className={align}>{minorContent}</div> }
         </div>
