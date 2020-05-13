@@ -8,81 +8,84 @@ export const leftShiftKeys = [
 ]
 
 
-type KeyboardKey = {
+type KeyboardKey = { 
+    coloring: string,
     align: 'center' | 'right' | 'left'
     content: string
     minorContent?: string
 }
 
+
+
 export const keyboardKeys: KeyboardKey[][] = [
     [
-        { align: 'center', content: '~', minorContent: '~' },
-        { align: 'center', content: '!', minorContent: '1' },
-        { align: 'center', content: '@', minorContent: '2' },
-        { align: 'center', content: '#', minorContent: '3' },
-        { align: 'center', content: '$', minorContent: '4' },
-        { align: 'center', content: '%', minorContent: '5' },
-        { align: 'center', content: '^', minorContent: '6' },
-        { align: 'center', content: '&', minorContent: '7' },
-        { align: 'center', content: '*', minorContent: '8' },
-        { align: 'center', content: '(', minorContent: '9' },
-        { align: 'center', content: ')', minorContent: '0' },
-        { align: 'center', content: '_', minorContent: '-' },
-        { align: 'center', content: '+', minorContent: '+' },
-        { align: 'right', content: 'delete' }
+        { coloring: '#FFFFFF', align: 'center', content: '~', minorContent: '`' },
+        { coloring: '#78e2aa', align: 'center', content: '!', minorContent: '1' },
+        { coloring: '#78e2aa', align: 'center', content: '@', minorContent: '2' },
+        { coloring: '#63e3ff', align: 'center', content: '#', minorContent: '3' },
+        { coloring: '#f69ec4', align: 'center', content: '$', minorContent: '4' },
+        { coloring: '#ffc07e', align: 'center', content: '%', minorContent: '5' },
+        { coloring: '#ffc07e', align: 'center', content: '^', minorContent: '6' },
+        { coloring: '#ffef7e', align: 'center', content: '&', minorContent: '7' },
+        { coloring: '#f69ec4', align: 'center', content: '*', minorContent: '8' },
+        { coloring: '#63e3ff', align: 'center', content: '(', minorContent: '9' },
+        { coloring: '#78e2aa', align: 'center', content: ')', minorContent: '0' },
+        { coloring: '#78e2aa', align: 'center', content: '_', minorContent: '-' },
+        { coloring: '#78e2aa', align: 'center', content: '+', minorContent: '+' },
+        { coloring: '#FFFFFF', align: 'right', content: 'delete' }
     ],
     [
-        { align: 'left', content: 'tab' },
-        { align: 'center', content: 'Q' },
-        { align: 'center', content: 'W' },
-        { align: 'center', content: 'E' },
-        { align: 'center', content: 'R' },
-        { align: 'center', content: 'T' },
-        { align: 'center', content: 'Y' },
-        { align: 'center', content: 'U' },
-        { align: 'center', content: 'I' },
-        { align: 'center', content: 'O' },
-        { align: 'center', content: 'P' },
-        { align: 'center', content: '{', minorContent: '[' },
-        { align: 'center', content: '}', minorContent: ']' },
-        { align: 'center', content: '|', minorContent: '\\' }
+        { coloring: '', align: 'left', content: 'tab' },
+        { coloring: '#78e2aa', align: 'center', content: 'Q' },
+        { coloring: '#63e3ff', align: 'center', content: 'W' },
+        { coloring: '#f69ec4', align: 'center', content: 'E' },
+        { coloring: '#ffc07e', align: 'center', content: 'R' },
+        { coloring: '#ffc07e', align: 'center', content: 'T' },
+        { coloring: '#ffef7e', align: 'center', content: 'Y' },
+        { coloring: '#ffef7e', align: 'center', content: 'U' },
+        { coloring: '#f69ec4', align: 'center', content: 'I' },
+        { coloring: '#63e3ff', align: 'center', content: 'O' },
+        { coloring: '#78e2aa', align: 'center', content: 'P' },
+        { coloring: '#78e2aa', align: 'center', content: '{', minorContent: '[' },
+        { coloring: '#78e2aa', align: 'center', content: '}', minorContent: ']' },
+        { coloring: '#FFFFFF', align: 'center', content: '|', minorContent: '\\' }
     ],
     [
-        { align: 'left', content: 'caps lock' },
-        { align: 'center', content: 'A' },
-        { align: 'center', content: 'S' },
-        { align: 'center', content: 'D' },
-        { align: 'center', content: 'F' },
-        { align: 'center', content: 'G' },
-        { align: 'center', content: 'H' },
-        { align: 'center', content: 'J' },
-        { align: 'center', content: 'K' },
-        { align: 'center', content: 'L' },
-        { align: 'center', content: ':', minorContent: ';' },
-        { align: 'center', content: '', minorContent: "'" },
-        { align: 'right', content: 'return' }
+        { coloring: '#FFFFFF', align: 'left', content: 'caps lock' },
+        { coloring: '#78e2aa', align: 'center', content: 'A' },
+        { coloring: '#63e3ff', align: 'center', content: 'S' },
+        { coloring: '#f69ec4', align: 'center', content: 'D' },
+        { coloring: '#ffc07e', align: 'center', content: 'F' },
+        { coloring: '#ffc07e', align: 'center', content: 'G' },
+        { coloring: '#ffef7e', align: 'center', content: 'H' },
+        { coloring: '#ffef7e', align: 'center', content: 'J' },
+        { coloring: '#f69ec4', align: 'center', content: 'K' },
+        { coloring: '#63e3ff', align: 'center', content: 'L' },
+        { coloring: '#78e2aa', align: 'center', content: ':', minorContent: ';' },
+        { coloring: '#78e2aa', align: 'center', content: '', minorContent: "'" },
+        { coloring: '#FFFFFF', align: 'right', content: 'return' }
     ],
     [
-        { align: 'left', content: 'shift' },
-        { align: 'center', content: 'Z' },
-        { align: 'center', content: 'X' },
-        { align: 'center', content: 'C' },
-        { align: 'center', content: 'V' },
-        { align: 'center', content: 'B' },
-        { align: 'center', content: 'N' },
-        { align: 'center', content: 'M' },
-        { align: 'center', content: '<', minorContent: ',' },
-        { align: 'center', content: '>', minorContent: '.' },
-        { align: 'center', content: '?', minorContent: '/' },
-        { align: 'right', content: 'shift' }
+        { coloring: '#FFFFFF', align: 'left', content: 'shift' },
+        { coloring: '#78e2aa', align: 'center', content: 'Z' },
+        { coloring: '#63e3ff', align: 'center', content: 'X' },
+        { coloring: '#f69ec4', align: 'center', content: 'C' },
+        { coloring: '#ffc07e', align: 'center', content: 'V' },
+        { coloring: '#ffc07e', align: 'center', content: 'B' },
+        { coloring: '#ffef7e', align: 'center', content: 'N' },
+        { coloring: '#ffef7e', align: 'center', content: 'M' },
+        { coloring: '#f69ec4', align: 'center', content: '<', minorContent: ',' },
+        { coloring: '#63e3ff', align: 'center', content: '>', minorContent: '.' },
+        { coloring: '#78e2aa', align: 'center', content: '?', minorContent: '/' },
+        { coloring: '#FFFFFF', align: 'right', content: 'shift' }
     ],
     [
-        { align: 'left', content: 'ctrl' },
-        { align: 'left', content: 'alt' },
-        { align: 'left', content: 'cmd' },
-        { align: 'center', content: ' ' },
-        { align: 'right', content: 'cmd' },
-        { align: 'right', content: 'alt' },
-        { align: 'right', content: 'ctrl' },
+        { coloring: '#FFFFFF', align: 'left', content: 'ctrl' },
+        { coloring: '#FFFFFF', align: 'left', content: 'alt' },
+        { coloring: '#FFFFFF', align: 'left', content: 'cmd' },
+        { coloring: '#FFFFFF', align: 'center', content: ' ' },
+        { coloring: '#FFFFFF', align: 'right', content: 'cmd' },
+        { coloring: '#FFFFFF', align: 'right', content: 'alt' },
+        { coloring: '#FFFFFF', align: 'right', content: 'ctrl' },
     ]
 ]
