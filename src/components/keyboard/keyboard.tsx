@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Observable } from 'rxjs'
 import { TypingAnalyzerState } from '@domain/typing/analyzer'
 import { useObservable } from '@commons/react-hooks/use-observable'
@@ -18,32 +18,41 @@ export const Keyboard = (props: Props) => {
     const character = state?.data[state?.pointer].character
     const isShiftActive = character && isCharacterRequiredShift(character)
 
-    return (
-        <div className='keyboard'>
-            {keyboardKeys.map((rowKeys, index) => {
-                return (
-                    <div key={index+1} className={`row-container row${index + 1}`}>
-                        {
-                            rowKeys.map((keyCharacteristics, index) => {
-                                const { align, content, minorContent } = keyCharacteristics
-                                let isActive = character === content || character === content.toLowerCase() || character === minorContent
-                                if (content === 'shift' && isShiftActive){
-                                    if (align === 'left'){
-                                        isActive= character!==undefined && !leftShiftKeys.includes(character)
-                                    } else {
-                                        isActive= character!==undefined && leftShiftKeys.includes(character)
-                                    }
-                                }
+    const [isColoring, setIsColoring] = useState(false)
 
-                                return (
-                                    <Key key={index} isActive={isActive} {...keyCharacteristics} />
-                                )
-                            })
-                        }
-                    </div>
-                )
-                }
-            )}
+
+    return (
+        <div>
+            <label>
+                Coloring:
+                <input id='coloring' type='checkbox' checked={isColoring} onChange={() => setIsColoring(!isColoring)}/>
+            </label>
+            <div className='keyboard'>
+                {keyboardKeys.map((rowKeys, index) => {
+                    return (
+                        <div key={index+1} className={`row-container row${index + 1}`}>
+                            {
+                                rowKeys.map((keyCharacteristics, index) => {
+                                    const { align, content, minorContent } = keyCharacteristics
+                                    let isActive = character === content || character === content.toLowerCase() || character === minorContent
+                                    if (content === 'shift' && isShiftActive){
+                                        if (align === 'left'){
+                                            isActive= character!==undefined && !leftShiftKeys.includes(character)
+                                        } else {
+                                            isActive= character!==undefined && leftShiftKeys.includes(character)
+                                        }
+                                    }
+
+                                    return (
+                                        <Key key={index} isColoring={isColoring} isActive={isActive} {...keyCharacteristics} />
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                    }
+                )}
+            </div>
         </div>
     )
 }
