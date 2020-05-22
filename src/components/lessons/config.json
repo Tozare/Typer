@@ -1,0 +1,238 @@
+{
+  "beginnerLessons": [
+    {
+      "id":"1",
+      "name": "J, F and Space",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "j"
+        },
+        {
+          "id": "2",
+          "lessonText": "jjjjjj"
+        },
+        {
+          "id": "3",
+          "lessonText": "f"
+        },
+        {
+          "id": "4",
+          "lessonText": "fffff"
+        },
+        {
+          "id": "5",
+          "lessonText": "jfffj jjfff"
+        },
+        {
+          "id": "6",
+          "lessonText": "jFjFjffjJ"
+        },
+        {
+          "id": "7",
+          "lessonText": "Jff fJfffjj jFJFjj"
+        },
+        {
+          "id": "8",
+          "lessonText": "jjFF JJJFFff fFFjjfJfjfjF"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "U, R and K keys",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "u"
+        },
+        {
+          "id": "2",
+          "lessonText": "uuuu"
+        },
+        {
+          "id": "3",
+          "lessonText": "r"
+        },
+        {
+          "id": "4",
+          "lessonText": "rrrrr"
+        },
+        {
+          "id": "5",
+          "lessonText": "k"
+        },
+        {
+          "id": "6",
+          "lessonText": "kkkkk"
+        },
+        {
+          "id": "7",
+          "lessonText": "rrrkkkuuu uurrkkr"
+        },
+        {
+          "id": "8",
+          "lessonText": "rrrkkkUuKK rRRrKKuu"
+        }
+      ]
+    }
+  ],
+
+  "intermediateLessons": [
+    {
+      "id": "1",
+      "name": "Common english words",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "apple"
+        },
+        {
+          "id": "2",
+          "lessonText": "rat"
+        },
+        {
+          "id": "3",
+          "lessonText": "music"
+        },
+        {
+          "id": "4",
+          "lessonText": "onion"
+        },
+        {
+          "id": "5",
+          "lessonText": "mail"
+        },
+        {
+          "id": "6",
+          "lessonText": "street"
+        },
+        {
+          "id": "7",
+          "lessonText": "clock"
+        },
+        {
+          "id": "8",
+          "lessonText": "education"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "@, # and $ special symbols",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "@"
+        },
+        {
+          "id": "2",
+          "lessonText": "@@@@@"
+        },
+        {
+          "id": "3",
+          "lessonText": "#"
+        },
+        {
+          "id": "4",
+          "lessonText": "#####"
+        },
+        {
+          "id": "5",
+          "lessonText": "$"
+        },
+        {
+          "id": "6",
+          "lessonText": "$$$$$"
+        },
+        {
+          "id": "7",
+          "lessonText": "@@@@ ##### $$$$$$"
+        },
+        {
+          "id": "8",
+          "lessonText": "@###@$$ $$$#@$#@$#@"
+        }
+      ]
+    }
+  ],
+
+  "advancedLessons": [
+    {
+      "id": "1",
+      "name": "Simple english sentences",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "Here you can find activities to practise your reading skills."
+        },
+        {
+          "id": "2",
+          "lessonText": "Reading will help you to improve your understanding of the language and build your vocabulary."
+        },
+        {
+          "id": "3",
+          "lessonText": "Take our free online English test to find out which level to choose."
+        },
+        {
+          "id": "4",
+          "lessonText": "My friend is afraid of spiders."
+        },
+        {
+          "id": "5",
+          "lessonText": "This isn't very unusual; a lot of people are afraid of spiders."
+        },
+        {
+          "id": "6",
+          "lessonText": "This is quite normal, I think. But my friend isn't afraid of spiders in any normal way."
+        },
+        {
+          "id": "7",
+          "lessonText": "But my friend had a surprise for me when we met for coffee last week."
+        },
+        {
+          "id": "8",
+          "lessonText": "Have you ever done any extreme sports? "
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Simple english texts",
+      "lessons": [
+        {
+          "id": "1",
+          "lessonText": "Let's not look at grammar as a cold, harsh mistress.She can also be a fun, kooky aunt. Here are some tricks you can do to make crazy sounding sentences that are still grammatical"
+        },
+        {
+          "id": "2",
+          "lessonText": "Take advantage of the fact that the same sentence can have two different structures. This famous joke from Groucho Marx assumes that most people expect the structure of the first part to be"
+        },
+        {
+          "id": "3",
+          "lessonText": "Molly had always been a clever girl. As a child, whenever her mother asked her to do work, she always found some way to get out of it."
+        },
+        {
+          "id": "4",
+          "lessonText": "Once there were two brothers. The older brother, Brian, was very clever, but also very proud. The younger brother, Frederick, was not so clever, but he was kind, and everyone liked him."
+        },
+        {
+          "id": "5",
+          "lessonText": "Once there was a group of elephants. They were going to visit their family, and they wanted to bring them honey. So they went and collected honey, and started walking. On the road, they came across a hare. "
+        },
+        {
+          "id": "6",
+          "lessonText": "Once upon a time, in Ancient Greece, there was a man called Byzas. Byzas was the son of Nisos, the King of Megara, a city in Greece. ‘My son,’ said King Nisos one day."
+        },
+        {
+          "id": "7",
+          "lessonText": "There was an illness in the world. It went everywhere. It went into cities, towns and villages. It went inside houses, inside factories, inside people’s thoughts. "
+        },
+        {
+          "id": "8",
+          "lessonText": "There was once an old woman, who had three daughters. The eldest daughter had three eyes, so she was called Three-Eyed. The youngest daughter had one eye, so she was called One-Eyed. The middle daughter had two eyes, so she was called Two-Eyed. "
+        }
+      ]
+    }
+  ]
+}

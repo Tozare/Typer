@@ -4,11 +4,17 @@ import './app.less'
 import { PracticePage } from 'components/pages/practice'
 import { Services } from 'services/index'
 import * as serviceWorker from './service-worker'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { NavBar } from "components/nav/nav"
+import { MainPage } from "components/pages/main"
 
 ReactDOM.render(
     <React.StrictMode>
-        <Services />
-        <PracticePage />
+        <Router>
+            <Services />
+            <NavBar/>
+            <MainPage/>
+        </Router>
     </React.StrictMode>,
     document.getElementById('root')
 )
