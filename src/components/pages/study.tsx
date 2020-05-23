@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
+import { Lessons } from 'components/lessons/lessons'
 
 export const StudyPage = () => {
     let { path, url } = useRouteMatch();
@@ -23,7 +24,7 @@ export const StudyPage = () => {
                     <h3>Please select your level.</h3>
                 </Route>
                 <Route path={`${path}/:levelID`}>
-                    <h1>lessons according to the level should be here</h1>
+                    <Lessons/>
                 </Route>
             </Switch>
         </div>

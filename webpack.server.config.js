@@ -5,7 +5,8 @@ module.exports = {
     target: 'node',
     output: {
         path: path.resolve(__dirname, 'builds'),
-        filename: 'server.js'
+        filename: 'server.js',
+
     },
     module: {
         rules: [

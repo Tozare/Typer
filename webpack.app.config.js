@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/app.tsx',
     output: {
         path: path.resolve(__dirname, 'builds/app/'),
-        filename: 'app.[hash].js'
+        filename: 'app.[hash].js',
     },
     module: {
         rules: [
