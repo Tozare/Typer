@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { lessonsData } from './config'
 import { PracticeLessonPage } from 'components/lessons/practiceLesson'
@@ -15,12 +15,11 @@ export type lessonsType = {
 export const Lessons = () => {
     const [currentExercise, setCurrentExercise] = useState({
         lessonIndex: 0,
-        exerciseIndex: 1
+        exerciseIndex: 0
     })
     const [practice, setPractice] = useState(false)
-    const [practiceChoice, setPracticeChoice] = useState(false)
-
     const { levelID } = useParams()
+
 
     let lessons: lessonsType = lessonsData.beginnerLessons
     if (levelID === 'beginner'){
@@ -30,6 +29,9 @@ export const Lessons = () => {
     } else if (levelID === 'advanced'){
         lessons = lessonsData.advancedLessons
     }
+    useEffect(()=> {
+        setPractice(false)
+    }, [lessons])
 
     const choicePracticeText = (lessonIndex: number, exerciseIndex: number) => {
         setCurrentExercise({
@@ -41,15 +43,22 @@ export const Lessons = () => {
 
     const continueStudy = () => {
         const { lessonIndex, exerciseIndex } = currentExercise
-        if (exerciseIndex === lessons[lessonIndex].exercises.length){
-            setPractice(false)
+        if (exerciseIndex === lessons[lessonIndex].exercises.length-1){
+            setCurrentExercise({
+                lessonIndex: lessonIndex+1,
+                exerciseIndex: 0
+            })
+            return lessons[lessonIndex+1].exercises[0].text
         } else {
             setCurrentExercise({
                 lessonIndex: lessonIndex,
                 exerciseIndex: exerciseIndex+1
             })
+            return lessons[lessonIndex].exercises[exerciseIndex+1].text
         }
-        // setPracticeChoice(false)
+    }
+    const finishExercise = () => {
+        setPractice(false)
     }
 
     return (
@@ -74,19 +83,12 @@ export const Lessons = () => {
                 </div>
                 :
                 <div>
-                    <PracticeLessonPage lessons={lessons} continueStudy={continueStudy} currentExercise={currentExercise}/>
-                    {/*{ !practiceChoice ?*/}
-                    {/*    <PracticeLessonPage lessons={lessons} continueStudy={() => setPracticeChoice(true)} currentExercise={currentExercise}/> :*/}
-                    {/*    <div>*/}
-                    {/*        <button onClick={continueStudy}>continue</button>*/}
-                    {/*        <button onClick={() => setPracticeChoice(false)}>again</button>*/}
-                    {/*        <button onClick={() => {*/}
-                    {/*            setPracticeChoice(false)*/}
-                    {/*            setPractice(false)*/}
-                    {/*        }}>stop</button>*/}
-                    {/*    </div>*/}
-
-                    {/*}*/}
+                    <PracticeLessonPage
+                        lessons={lessons}
+                        currentExercise={currentExercise}
+                        continueStudy={continueStudy}
+                        finishExercise={finishExercise}
+                    />
                 </div>
              }
         </div>

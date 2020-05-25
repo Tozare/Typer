@@ -13,32 +13,29 @@ import { lessonsType } from 'components/lessons/lessons'
 
 type Props = {
     lessons: lessonsType,
-    continueStudy: () => void,
     currentExercise: {
         lessonIndex: number,
         exerciseIndex: number
     }
+    continueStudy: () => string,
+    finishExercise: () => void
 }
 
 export const PracticeLessonPage = (props: Props) => {
-    const { lessons, continueStudy, currentExercise } = props
+    const { lessons, currentExercise, continueStudy, finishExercise } = props
     const { lessonIndex, exerciseIndex } = currentExercise
-    const text: string = lessons[lessonIndex].exercises[exerciseIndex].text
 
-    const [typingAnalyzer, initNewTypingAnalyzer] = useState()
+    let text = lessons[lessonIndex].exercises[exerciseIndex].text
+
+    const [typingAnalyzer, initNewTypingAnalyzer] = useState(new TypingAnalyzer(TypingStream.shared().characters, text))
 
     const [state, setState] = useState({
         typingSpeed: 0,
         typingAccuracy: 100,
     })
-    const [practice, setPractice] = useState(true)
+    const [showMenu, setShowMenu] = useState(false)
 
-    useEffect(() => {
-        initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, text))
-        setPractice(true)
-    }, [text])
-
-    const finishExercise = () => {
+    const finalizeExercise = () => {
         zip(
             typingAnalyzer.typingSpeedInAmountOfCharactersPerMinute(),
             typingAnalyzer.typingAccuracyInPercents()
@@ -49,13 +46,23 @@ export const PracticeLessonPage = (props: Props) => {
                 typingSpeed,
                 typingAccuracy
             })
-            setPractice(false)
-            debugger
+            setShowMenu(true)
         })
     }
 
+    const startNextExercise = () => {
+        text = continueStudy()
+        initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, text))
+        setShowMenu(false)
+    }
+
+    const startExerciseAgain = () => {
+        initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, text))
+        setShowMenu(false)
+    }
+
     const typingAnalyzerState = typingAnalyzer.state.pipe(
-        finalize(finishExercise)
+        finalize(finalizeExercise)
     )
 
     const { typingSpeed, typingAccuracy } = state
@@ -63,30 +70,33 @@ export const PracticeLessonPage = (props: Props) => {
         return null
     return (
         <div className='typing-practice'>
-            <div className='window'>
-                <TypingWindow typingAnalyzeState={typingAnalyzerState} />
-                <Keyboard typingAnalyzeState={typingAnalyzerState}/>
-            </div>
-            <div className='window'>
-                {
-                    typingSpeed === 0
-                        ? null
-                        :  <TypingAnalytics
-                            typingAccuracy={typingAccuracy}
-                            typingAccuracyMeasure={'%'}
-                            typingSpeed={Math.ceil(typingSpeed/7)}
-                            typingSpeedMeasure={'wpm'}/>
-                }
-                <button onClick={() => {
-                    continueStudy()
-                    setPractice(true)
-                }}
-                >
-                    continue
-                </button>
-                <button>again</button>
-                <button>stop</button>
-            </div>
+            <h1>{lessons[lessonIndex].name} and {exerciseIndex+1} exercise</h1>
+            {
+                showMenu ?
+                    <div className='window'>
+                        {
+                            typingSpeed === 0
+                                ? null
+                                :  <TypingAnalytics
+                                    typingAccuracy={typingAccuracy}
+                                    typingAccuracyMeasure={'%'}
+                                    typingSpeed={Math.ceil(typingSpeed/7)}
+                                    typingSpeedMeasure={'wpm'}/>
+                        }
+                        <hr/>
+                        <button onClick={startNextExercise}>
+                            continue
+                        </button>
+                        <button onClick={startExerciseAgain}>again</button>
+                        <button onClick={finishExercise}>stop</button>
+                    </div>
+                    :
+                    <div className='window'>
+                        <TypingWindow typingAnalyzeState={typingAnalyzerState} />
+                        <Keyboard typingAnalyzeState={typingAnalyzerState}/>
+                    </div>
+            }
+
         </div>
 
     )
