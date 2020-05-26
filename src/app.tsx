@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './app.less'
-import { PracticePage } from 'components/pages/practice'
 import { Services } from 'services/index'
 import * as serviceWorker from './service-worker'
 import { BrowserRouter as Router } from 'react-router-dom'

@@ -6,19 +6,19 @@ export const lessonsData = {
             exercises: [
                 {
                     id: '1',
-                    text: 'j'
+                    text: 'j J'
                 },
                 {
                     id: '2',
-                    text: 'jjjjjj'
+                    text: 'jJjjJj'
                 },
                 {
                     id: '3',
-                    text: 'f'
+                    text: 'f F'
                 },
                 {
                     id: '4',
-                    text: 'fffff'
+                    text: 'ffFffFf'
                 },
                 {
                     id: '5',
@@ -44,27 +44,27 @@ export const lessonsData = {
             exercises: [
                 {
                     id: '1',
-                    text: 'u'
+                    text: 'u U'
                 },
                 {
                     id: '2',
-                    text: 'uuuu'
+                    text: 'uUuuUu'
                 },
                 {
                     id: '3',
-                    text: 'r'
+                    text: 'r R'
                 },
                 {
                     id: '4',
-                    text: 'rrrrr'
+                    text: 'rRrrr'
                 },
                 {
                     id: '5',
-                    text: 'k'
+                    text: 'k K'
                 },
                 {
                     id: '6',
-                    text: 'kkkkk'
+                    text: 'kkKkk'
                 },
                 {
                     id: '7',
@@ -123,7 +123,7 @@ export const lessonsData = {
             exercises: [
                 {
                     id: '1',
-                    text: '@'
+                    text: '@ @'
                 },
                 {
                     id: '2',
@@ -131,7 +131,7 @@ export const lessonsData = {
                 },
                 {
                     id: '3',
-                    text: '#'
+                    text: '# #'
                 },
                 {
                     id: '4',
@@ -139,7 +139,7 @@ export const lessonsData = {
                 },
                 {
                     id: '5',
-                    text: '$'
+                    text: '$ $'
                 },
                 {
                     id: '6',

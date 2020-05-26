@@ -15,8 +15,7 @@ type Props = {
 export const Keyboard = (props: Props) => {
     const { typingAnalyzeState } = props
     const state = useObservable<TypingAnalyzerState | undefined>(typingAnalyzeState)
-   // const character =  state?.data[state?.pointer].character
-    const character =  state && state.data[state.pointer].character
+    const character =  state?.data[state?.pointer].character
     const isShiftActive = character && isCharacterRequiredShift(character)
     const [isColoring, setIsColoring] = useState(false)
 

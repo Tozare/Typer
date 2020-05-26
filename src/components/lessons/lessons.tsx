@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { lessonsData } from './config'
 import { PracticeLessonPage } from 'components/lessons/practiceLesson'
@@ -17,9 +17,8 @@ export const Lessons = () => {
         lessonIndex: 0,
         exerciseIndex: 0
     })
-    const [practice, setPractice] = useState(false)
+    const [isPracticePage, setIsPracticePage] = useState(false)
     const { levelID } = useParams()
-
 
     let lessons: lessonsType = lessonsData.beginnerLessons
     if (levelID === 'beginner'){
@@ -29,16 +28,13 @@ export const Lessons = () => {
     } else if (levelID === 'advanced'){
         lessons = lessonsData.advancedLessons
     }
-    useEffect(()=> {
-        setPractice(false)
-    }, [lessons])
 
     const choicePracticeText = (lessonIndex: number, exerciseIndex: number) => {
         setCurrentExercise({
             lessonIndex,
             exerciseIndex
         })
-        setPractice(true)
+        setIsPracticePage(true)
     }
 
     const continueStudy = () => {
@@ -58,12 +54,12 @@ export const Lessons = () => {
         }
     }
     const finishExercise = () => {
-        setPractice(false)
+        setIsPracticePage(false)
     }
 
     return (
         <div>
-            { !practice ?
+            { !isPracticePage ?
                 <div>
                     {lessons.map((lesson, lessonIndex) =>
                         <div key={lesson.id}>
