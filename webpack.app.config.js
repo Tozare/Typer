@@ -6,7 +6,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'builds/app/'),
         filename: 'app.[hash].js',
-
+        publicPath: '/',
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     module: {
         rules: [

@@ -7,13 +7,13 @@ export const NavBar = () => {
         <div>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to='/'>Home</Link>
                 </li>
                 <li>
-                    <Link to="/practice">Practice</Link>
+                    <Link to='/practice'>Practice</Link>
                 </li>
                 <li>
-                    <Link to="/study">Study</Link>
+                    <Link to='/study'>Study</Link>
                 </li>
             </ul>
             <hr />

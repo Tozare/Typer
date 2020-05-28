@@ -4,8 +4,8 @@ import './app.less'
 import { Services } from 'services/index'
 import * as serviceWorker from './service-worker'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { NavBar } from "components/nav/nav"
-import { MainPage } from "components/pages/main"
+import { NavBar } from 'components/nav/nav'
+import { MainPage } from 'components/pages/main'
 
 ReactDOM.render(
     <React.StrictMode>

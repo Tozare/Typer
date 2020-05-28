@@ -9,6 +9,7 @@ export const StudyPage = () => {
         <div>
             <Switch>
                 <Route exact path={path}>
+                    <h1>please, select your level</h1>
                     <ul>
                         <li>
                             <Link to={`${url}/beginner`}>Beginner</Link>
@@ -21,7 +22,7 @@ export const StudyPage = () => {
                         </li>
                     </ul>
                 </Route>
-                <Route exact path={`${path}/:levelID`}>
+                <Route path={`${path}/:levelID`}>
                     <Link to={url}>Back to choice level</Link>
                     <Lessons/>
                 </Route>

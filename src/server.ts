@@ -7,8 +7,9 @@ const app = express()
 app.use(express.static('./builds/app/'))
 
 const PORT = process.env.PORT || 3001
+
 app.get('/*', (req: Request, res: Response) => {
-    fs.readFile('./builds/index.html', 'utf8', (err, data) => {
+    fs.readFile('./builds/app/index.html', 'utf8', (err, data) => {
         res.send(data)
     })
 })
@@ -16,3 +17,8 @@ app.get('/*', (req: Request, res: Response) => {
 app.listen(PORT, () => {
     console.log('server started at http://localhost:' + PORT)
 })
+
+
+
+
+

@@ -5,7 +5,11 @@ module.exports = {
     target: 'node',
     output: {
         path: path.resolve(__dirname, 'builds'),
+        publicPath: "/",
         filename: 'server.js',
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     module: {
         rules: [

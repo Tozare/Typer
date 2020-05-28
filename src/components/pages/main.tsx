@@ -8,14 +8,14 @@ export const MainPage = () => {
     return (
         <div>
             <Switch>
-                <Route exact path="/">
-                    <h1>home</h1>
-                </Route>
-                <Route path="/practice">
+                <Route path='/practice'>
                     <PracticePage/>
                 </Route>
-                <Route path="/study">
+                <Route path='/study'>
                     <StudyPage/>
+                </Route>
+                <Route path='/'>
+                    <h1>home</h1>
                 </Route>
             </Switch>
         </div>
