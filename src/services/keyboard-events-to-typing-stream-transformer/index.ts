@@ -14,7 +14,7 @@ export class KeyboardEventsToTypingStreamTransformer implements Service {
     }
 
     private handleKeyDown = (event: KeyboardEvent) => {
-        if (event.isComposing && event.keyCode === 229) {
+        if (event.isComposing || event.keyCode === 229) {
             return
         }
 
