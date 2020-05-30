@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { TypingAnalyzer } from '@domain/typing/analyzer'
 import { TypingStream } from '@domain/typing/stream'
-
 import { zip } from 'rxjs'
 import { finalize, take } from 'rxjs/operators'
-
-
 import { TypingAnalytics } from 'components/typing-analytics'
 import { TypingWindow } from 'components/typing-window'
 import { Keyboard } from 'components/keyboard/keyboard'
-import { lessonsType } from 'components/lessons/lessons'
+import { lessonsType } from 'components/pages/lessons'
 
 type Props = {
     lessons: lessonsType,
@@ -21,7 +18,7 @@ type Props = {
     finishExercise: () => void
 }
 
-export const PracticeLessonPage = (props: Props) => {
+export const Practice = (props: Props) => {
     const { lessons, currentExercise, continueStudy, finishExercise } = props
     const { lessonIndex, exerciseIndex } = currentExercise
     let text = lessons[lessonIndex].exercises[exerciseIndex].text

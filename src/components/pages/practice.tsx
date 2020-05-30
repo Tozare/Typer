@@ -37,6 +37,7 @@ const texts = [
 
 export const PracticePage = () => {
     // TODO: Remove instance of TypingAnalyzer from state
+    // TODO: Fix the error: when the text has only one character error appear
     const [typingAnalyzer, initNewTypingAnalyzer] = useState(
         new TypingAnalyzer(TypingStream.shared().characters, texts[randomInteger(0, texts.length - 1)])
     )

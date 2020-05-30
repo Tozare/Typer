@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { lessonsData } from './config'
-import { PracticeLessonPage } from 'components/lessons/practiceLesson'
+import { lessonsData } from '../lessons/config'
+import { Practice } from 'components/lessons/practice'
+import { Link } from 'react-router-dom'
 
 export type lessonsType = {
-   id: string,
-   name: string,
-   exercises: {
-       id: string,
-       text: string
-   }[]
+    id: string,
+    name: string,
+    exercises: {
+        id: string,
+        text: string
+    }[]
 }[]
 
-export const Lessons = () => {
+export const LessonsPage = () => {
     const [currentExercise, setCurrentExercise] = useState({
         lessonIndex: 0,
         exerciseIndex: 0
     })
     const [isPracticePage, setIsPracticePage] = useState(false)
     const { levelID } = useParams()
-
     let lessons: lessonsType = lessonsData.beginnerLessons
+
     if (levelID === 'beginner'){
         lessons = lessonsData.beginnerLessons
     } else if (levelID === 'intermediate'){
@@ -59,6 +60,7 @@ export const Lessons = () => {
 
     return (
         <div>
+            <Link to={'/study'}>Back to selection typing lessons level</Link>
             { !isPracticePage ?
                 <div>
                     {lessons.map((lesson, lessonIndex) =>
@@ -79,14 +81,14 @@ export const Lessons = () => {
                 </div>
                 :
                 <div>
-                    <PracticeLessonPage
+                    <Practice
                         lessons={lessons}
                         currentExercise={currentExercise}
                         continueStudy={continueStudy}
                         finishExercise={finishExercise}
                     />
                 </div>
-             }
+            }
         </div>
     )
 }

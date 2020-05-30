@@ -5,8 +5,8 @@ import { useObservable } from '@commons/react-hooks/use-observable'
 import { isCharacterRequiredShift } from '@commons/characters'
 
 import './keyboard.less'
-import { leftShiftKeys, keyboardKeys } from "./keyboardCharacteristics"
-import { Key } from "components/keyboard/key"
+import { leftShiftKeys, keyboardKeys } from './keyboardCharacteristics'
+import { Key } from 'components/keyboard/key'
 
 type Props = {
     typingAnalyzeState: Observable<TypingAnalyzerState>

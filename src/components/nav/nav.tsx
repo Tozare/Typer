@@ -13,7 +13,7 @@ export const NavBar = () => {
                     <Link to='/practice'>Practice</Link>
                 </li>
                 <li>
-                    <Link to='/study'>Study</Link>
+                    <Link to='/study'>Lessons</Link>
                 </li>
             </ul>
             <hr />
