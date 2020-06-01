@@ -7,6 +7,7 @@ import { TypingAnalytics } from 'components/typing-analytics'
 import { TypingWindow } from 'components/typing-window'
 import { Keyboard } from 'components/keyboard/keyboard'
 import { lessonsType } from 'components/pages/lessons'
+import './practice.less'
 
 type Props = {
     lessons: lessonsType,
@@ -61,11 +62,11 @@ export const Practice = (props: Props) => {
     const { typingSpeed, typingAccuracy } = state
 
     return (
-        <div className='typing-practice'>
-            <h1>{lessons[lessonIndex].name} and {exerciseIndex+1} exercise</h1>
+        <div className='practice-container'>
+            <div className='title'>{lessons[lessonIndex].name}: {exerciseIndex+1} exercise</div>
             {
                 isMenu ?
-                    <div className='window'>
+                    <div className='menu'>
                         {
                             typingSpeed === 0
                                 ? null
@@ -75,17 +76,20 @@ export const Practice = (props: Props) => {
                                     typingSpeed={Math.ceil(typingSpeed/7)}
                                     typingSpeedMeasure={'wpm'}/>
                         }
-                        <hr/>
-                        {isContinue && <button onClick={startNextExercise}>
+                        {isContinue && <div className='btn' onClick={startNextExercise}>
                             continue
-                        </button>}
-                        <button onClick={startExerciseAgain}>again</button>
-                        <button onClick={finishExercise}>stop</button>
+                        </div>}
+                        <div className='btn' onClick={startExerciseAgain}>again</div>
+                        <div className='btn' onClick={finishExercise}>stop</div>
                     </div>
                     :
-                    <div className='window'>
-                        <TypingWindow typingAnalyzeState={typingAnalyzerState} />
-                        <Keyboard typingAnalyzeState={typingAnalyzerState}/>
+                    <div>
+                        <div className='typing-container'>
+                            <TypingWindow typingAnalyzeState={typingAnalyzerState} />
+                        </div>
+                        <div className='keyboard-container'>
+                            <Keyboard typingAnalyzeState={typingAnalyzerState}/>
+                        </div>
                     </div>
             }
         </div>

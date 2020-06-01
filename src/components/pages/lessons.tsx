@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { lessonsData } from '../lessons/config'
 import { Practice } from 'components/lessons/practice'
 import { Link } from 'react-router-dom'
+import './lessons.less'
 
 export type lessonsType = {
     id: string,
@@ -59,19 +60,21 @@ export const LessonsPage = () => {
     }
 
     return (
-        <div>
-            <Link to={'/study'}>Back to selection typing lessons level</Link>
+        <div className='lessons-container'>
+            <div className='link-to-level-selection'>
+                <Link to={'/study'}>Back to level selection</Link>
+            </div>
             { !isPracticePage ?
-                <div>
+                <div className='lessons'>
                     {lessons.map((lesson, lessonIndex) =>
-                        <div key={lesson.id}>
-                            <h3>{lesson.name}</h3>
-                            <button onClick={() => choicePracticeText(lessonIndex, 0)}>
+                        <div className='lesson' key={lesson.id}>
+                            <div className='title'>{lesson.name}</div>
+                            <div className='start-btn' onClick={() => choicePracticeText(lessonIndex, 0)}>
                                 start
-                            </button>
-                            <div>
+                            </div>
+                            <div className='exercises'>
                                 {lesson.exercises.map((exercise, exerciseIndex) =>
-                                    <div key={exercise.id} onClick={() => choicePracticeText(lessonIndex, exerciseIndex)}>
+                                    <div className='exercise' key={exercise.id} onClick={() => choicePracticeText(lessonIndex, exerciseIndex)}>
                                         {exercise.text}
                                     </div>
                                 )}
@@ -80,14 +83,12 @@ export const LessonsPage = () => {
                     )}
                 </div>
                 :
-                <div>
-                    <Practice
-                        lessons={lessons}
-                        currentExercise={currentExercise}
-                        continueStudy={continueStudy}
-                        finishExercise={finishExercise}
-                    />
-                </div>
+                <Practice
+                    lessons={lessons}
+                    currentExercise={currentExercise}
+                    continueStudy={continueStudy}
+                    finishExercise={finishExercise}
+                />
             }
         </div>
     )

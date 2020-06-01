@@ -1,22 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './nav.less'
 
 export const NavBar = () => {
     return (
-        <div>
+        <nav>
             <ul>
                 <li>
-                    <Link to='/'>Home</Link>
+                    <NavLink exact to='/'>Home</NavLink>
                 </li>
                 <li>
-                    <Link to='/practice'>Practice</Link>
+                    <NavLink to='/practice'>Practice</NavLink>
                 </li>
                 <li>
-                    <Link to='/study'>Lessons</Link>
+                    <NavLink to='/study'>Lessons</NavLink>
                 </li>
             </ul>
-            <hr />
-        </div>
+        </nav>
     )
 }

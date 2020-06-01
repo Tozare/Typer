@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './lessons-level-select.less'
 
 export const LessonsLevelSelectPage = () => {
     return (
-        <div>
-            <h1>please, select your level</h1>
+        <div className='lessons-level-select-container'>
+            <div className='title'>Available levels:</div>
             <ul>
                 <li>
                     <Link to={'study/beginner'}>Beginner</Link>
