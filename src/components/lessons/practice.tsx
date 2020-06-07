@@ -6,30 +6,32 @@ import { finalize, take } from 'rxjs/operators'
 import { TypingAnalytics } from 'components/typing-analytics'
 import { TypingWindow } from 'components/typing-window'
 import { Keyboard } from 'components/keyboard/keyboard'
-import { lessonsType } from 'components/pages/lessons'
 import './practice.less'
+import { ExerciseResult, StateData } from '@domain/lessons/lessons'
 
 type Props = {
-    lessons: lessonsType,
+    lessonsData: StateData
     currentExercise: {
         lessonIndex: number,
         exerciseIndex: number
     }
-    continueStudy: () => string,
+    getNextExerciseText: () => string
     finishExercise: () => void
+    addResult: (exerciseId: string, result: ExerciseResult) => void
 }
 
 export const Practice = (props: Props) => {
-    const { lessons, currentExercise, continueStudy, finishExercise } = props
+    const { lessonsData, currentExercise, getNextExerciseText, finishExercise, addResult } = props
+
     const { lessonIndex, exerciseIndex } = currentExercise
-    let text = lessons[lessonIndex].exercises[exerciseIndex].text
+    let text = lessonsData[lessonIndex].exercises[exerciseIndex].text
     const [typingAnalyzer, initNewTypingAnalyzer] = useState(new TypingAnalyzer(TypingStream.shared().characters, text))
     const [state, setState] = useState({
         typingSpeed: 0,
         typingAccuracy: 100,
     })
     const [isMenu, setIsMenu] = useState(false)
-    const isContinue = lessonIndex !== lessons.length-1 || exerciseIndex !== lessons[lessonIndex].exercises.length-1
+    const isContinue = lessonIndex !== lessonsData.length-1 || exerciseIndex !== lessonsData[lessonIndex].exercises.length-1
 
     const finalizeExercise = () => {
         zip(
@@ -42,19 +44,25 @@ export const Practice = (props: Props) => {
                 typingSpeed,
                 typingAccuracy
             })
+            addResult(lessonsData[lessonIndex].exercises[exerciseIndex].id, {
+                errorsAmount: 5,
+                time: 4
+            })
             setIsMenu(true)
         })
     }
 
     const startNextExercise = () => {
-        text = continueStudy()
+        text = getNextExerciseText()
         initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, text))
         setIsMenu(false)
     }
+
     const startExerciseAgain = () => {
         initNewTypingAnalyzer(new TypingAnalyzer(TypingStream.shared().characters, text))
         setIsMenu(false)
     }
+
     const typingAnalyzerState = typingAnalyzer.state.pipe(
         finalize(finalizeExercise)
     )
@@ -63,7 +71,7 @@ export const Practice = (props: Props) => {
 
     return (
         <div className='practice-container'>
-            <div className='title'>{lessons[lessonIndex].name}: {exerciseIndex+1} exercise</div>
+            <div className='title'>{lessonsData[lessonIndex].lesson.name}: {exerciseIndex+1} exercise</div>
             {
                 isMenu ?
                     <div className='menu'>
